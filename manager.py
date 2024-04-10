@@ -59,7 +59,7 @@ class Manager():
                         winAmount += bet[0] 
                 else:
                     # label is a number
-                    if int(label) == winningNum:
+                    if (int(label) == winningNum) and (label != "00"):
                         winAmount += bet[0]
                     
 

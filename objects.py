@@ -67,7 +67,7 @@ class Ball():
         self.color = color
 
         self.spinning = False
-        self.startingIndex = 20 #randint(0,37)
+        self.startingIndex = randint(0,37)
         self.currentSquareIndex = self.startingIndex
         self.loops = 0
         self.totalDelay = 1
