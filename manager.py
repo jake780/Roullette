@@ -59,7 +59,7 @@ class Manager():
                         winAmount += bet[0] 
                 else:
                     # label is a number
-                    if (int(label) == winningNum) and (label != "00"):
+                    if (label not in ["red", "1-18", "19-36", "even", "odd", "1-12", "13-24", "25-36"]) and (int(label) == winningNum):
                         winAmount += bet[0]
                     
 
