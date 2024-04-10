@@ -118,12 +118,4 @@ class Ball():
                 self.startingIndex = randint(0,37)
                 self.currentSquareIndex = self.startingIndex
                 self.loops = 0
-
-
-
-
-
-
-            
-
             

@@ -63,8 +63,6 @@ class Manager():
                         winAmount += bet[0]
                     
 
-
-                    
         # Apply win amount
         self.bank += (winAmount)
 
@@ -161,4 +159,3 @@ class Manager():
                     self.holdingChip = True
 
                 pygame.time.delay(250)
-
