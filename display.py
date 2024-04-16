@@ -30,6 +30,7 @@ class Display():
                 pygame.display.update()
                 pygame.time.delay(100)
 
+
     def lastWinList(self):
         """Populates self.lastWinObjs with a list of previous wins"""
         # Update Previous Winning Numbers

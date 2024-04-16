@@ -61,7 +61,7 @@ class Manager():
                         winAmount += bet[0]
                 elif (label == "25-36") and (winningNum in range(25, 37)):
                         winAmount += bet[0]
-                elif (label == "even") and ((int(winningNum) % 2) == 0):
+                elif (label == "even") and (winningNum not in ["00", "0"]) and ((int(winningNum) % 2) == 0):
                         winAmount += bet[0]
                 elif (label == "odd") and ((int(winningNum) % 2) != 0):
                         winAmount += bet[0]
@@ -151,7 +151,7 @@ class Manager():
 
         #Pickup Chips
         for box in self.chipBoxes:
-            if (mousePos[0] >= box[0]) and (mousePos[0] <= box[0]+box[2]) and (mousePos[1] >= box[1]) and (mousePos[1] <= box[1]+box[3]) and click and (not self.holdingChip):
+            if (mousePos[0] >= box[0]) and (mousePos[0] <= box[0]+box[2]) and (mousePos[1] >= box[1]) and (mousePos[1] <= box[1]+box[3]) and click and (not self.holdingChip) and not (self.game.ball.spinning):
                 if (box == self.chipBoxes[0]) and (self.bank >= 1):
                     self.currentChip = Chip(self.game, mousePos[0]-self.betChipSize/2, mousePos[1]-self.betChipSize/2, self.betChipSize, self.betChipSize, self.game.oneChipColor, 1)
                 if (box == self.chipBoxes[1]) and (self.bank >= 2):
