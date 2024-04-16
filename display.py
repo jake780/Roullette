@@ -1,4 +1,5 @@
 import pygame
+from random import randint
 
 class Display():
     def __init__(self, game):
@@ -12,15 +13,22 @@ class Display():
 
     def winMessage(self, amount):
         """Displays win amount after spin"""
-        self.win_text = self.font.render(f"Win: {amount}", True, self.fgcolor, self.game.background)
-        self.win_rect = self.win_text.get_rect()
-        self.win_rect.center = (1400, 700)
+        if amount > 0:
+            for _ in range(40):
+                color = (randint(0,255), randint(0,255), randint(0,255))
 
-        self.game.draw()
-        self.game.m.draw([0,0], 0)
-        self.game.window.blit(self.win_text, self.win_rect)
-        pygame.display.update()
-        pygame.time.delay(4000)
+                self.win_text = self.font.render(f"Win: {amount}", True, self.fgcolor, color)
+                self.win_rect = self.win_text.get_rect()
+                self.win_rect.center = (1400, 700)
+
+                self.game.draw()
+                self.game.m.draw([0,0], 0) # Redraw chips
+
+                pygame.draw.rect(self.game.window, color, (1300, 670, 200, 60))
+
+                self.game.window.blit(self.win_text, self.win_rect)
+                pygame.display.update()
+                pygame.time.delay(100)
 
     def lastWinList(self):
         """Populates self.lastWinObjs with a list of previous wins"""

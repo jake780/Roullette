@@ -51,6 +51,8 @@ class Game():
         self.d = Display(self)
         self.m = Manager(self)
 
+        self.m.clearLog()
+
 
     def setup(self):
         """Setup and position all betting board squares and wheel squares"""

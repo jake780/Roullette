@@ -34,6 +34,10 @@ class Manager():
         with open("log.csv", "a") as log:
             log.write(f"{self.bank},")
 
+    def clearLog(self):
+        with open("log.csv", "w") as log:
+            log.write("")
+
     def payout(self, winningNum):
         """Payout all bets (Parses self.currentBets for winningBet)"""
         winAmount = 0
