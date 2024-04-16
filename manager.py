@@ -28,7 +28,11 @@ class Manager():
         self.gameChips = []
         self.currentBets = []
 
-        self.bank = 10000
+        self.bank = 100
+
+    def log(self):
+        with open("log.csv", "a") as log:
+            log.write(f"{self.bank},")
 
     def payout(self, winningNum):
         """Payout all bets (Parses self.currentBets for winningBet)"""
@@ -65,6 +69,9 @@ class Manager():
 
         # Apply win amount
         self.bank += (winAmount)
+
+        # Append to the log file
+        self.log()
 
         # Display win amount
         self.game.d.winMessage(winAmount)
