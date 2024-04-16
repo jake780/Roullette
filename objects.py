@@ -20,8 +20,8 @@ class Square():
         #Font
         self.fgcolor = ((255,255,255))
         self.bgcolor = ((0,0,0))
-        self.font = pygame.font.Font("freesansbold.ttf", 30)
-        self.font2 = pygame.font.Font("freesansbold.ttf", 20)
+        self.font = pygame.font.Font("Roboto-Medium.ttf", 30)
+        self.font2 = pygame.font.Font("Roboto-Medium.ttf", 20)
 
 
     def draw(self):

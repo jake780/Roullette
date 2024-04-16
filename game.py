@@ -39,6 +39,7 @@ class Game():
         self.tenChipColor = (0,200,0)
         self.twentyChipColor = (50,50,50)
         self.fiftyChipColor = (128,0,128)
+        self.hundChipColor = (248, 255, 54)
 
         self.setup()
         self.sortWheelSquares()
@@ -93,6 +94,7 @@ class Game():
         self.chips.append(Chip(self, 875, 660, 80, 80, self.tenChipColor, 10))
         self.chips.append(Chip(self, 975, 660, 80, 80, self.twentyChipColor, 20))
         self.chips.append(Chip(self, 1075, 660, 80, 80, self.fiftyChipColor, 50))
+        self.chips.append(Chip(self, 1175, 660, 80, 80, self.fiftyChipColor, 100))
 
     def getWheelSquare(self, value):
         """Returns a wheel square with value"""

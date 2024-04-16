@@ -3,7 +3,7 @@ import pygame
 class Display():
     def __init__(self, game):
         self.game = game
-        self.font = pygame.font.Font("freesansbold.ttf", 30)
+        self.font = pygame.font.Font("Roboto-Medium.ttf", 30)
         self.fgcolor = (255,255,255)
 
         self.barColor = (0, 0, 0)
@@ -20,7 +20,7 @@ class Display():
         self.game.m.draw([0,0], 0)
         self.game.window.blit(self.win_text, self.win_rect)
         pygame.display.update()
-        pygame.time.delay(5000)
+        pygame.time.delay(4000)
 
     def lastWinList(self):
         """Populates self.lastWinObjs with a list of previous wins"""
@@ -56,7 +56,7 @@ class Display():
 
         # Previous Winners List
         for obj in self.lastWinObjs:
-            pygame.draw.rect(self.game.window, obj[3], (obj[1][0]-20, obj[1][1]-2, 70, 34))
+            pygame.draw.rect(self.game.window, obj[3], (obj[1][0]-20, obj[1][1]-2, 70, 38))
             self.game.window.blit(obj[0], obj[1])
 
         # Draw sidebars
