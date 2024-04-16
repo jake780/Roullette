@@ -23,12 +23,12 @@ class Manager():
                                     [325,350,100,100, "2"], [425,350,100,100, "5"], [525,350,100,100, "8"],[625,350,100,100, "11"], [725,350,100,100, "14"], [825,350,100,100, "17"], [925,350,100,100, "20"], [1025,350,100,100, "23"], [1125,350,100,100, "26"], [1225,350,100,100, "29"], [1325,350,100,100, "32"], [1425,350,100,100, "35"],
                                     [325,450,100,100, "1"], [425,450,100,100, "4"], [525,450,100,100, "7"],[625,450,100,100, "10"], [725,450,100,100, "13"], [825,450,100,100, "16"], [925,450,100,100, "19"], [1025,450,100,100, "22"], [1125,450,100,100, "25"], [1225,450,100,100, "28"], [1325,450,100,100, "31"], [1425,450,100,100, "34"]]
         
-        self.chipBoxes = [[575, 660, 80, 80], [675, 660, 80, 80], [775, 660, 80, 80], [875, 660, 80, 80], [975, 660, 80, 80], [1075, 660, 80, 80], [1175, 660, 80, 80]]
+        self.chipBoxes = [[475, 660, 80, 80], [575, 660, 80, 80], [675, 660, 80, 80], [775, 660, 80, 80], [875, 660, 80, 80], [975, 660, 80, 80], [1075, 660, 80, 80], [1175, 655, 90, 90]]
 
         self.gameChips = []
         self.currentBets = []
 
-        self.bank = 100
+        self.bank = 10000
 
     def payout(self, winningNum):
         """Payout all bets (Parses self.currentBets for winningBet)"""
@@ -154,7 +154,9 @@ class Manager():
                 if (box == self.chipBoxes[5]) and (self.bank >= 50):
                     self.currentChip = Chip(self.game, mousePos[0]-self.betChipSize/2, mousePos[1]-self.betChipSize/2, self.betChipSize, self.betChipSize, self.game.fiftyChipColor, 50)
                 if (box == self.chipBoxes[6]) and (self.bank >= 100):
-                    self.currentChip = Chip(self.game, mousePos[0]-80/2, mousePos[1]-80/2, 80, 80, self.game.fiftyChipColor, 100)
+                    self.currentChip = Chip(self.game, mousePos[0]-80/2, mousePos[1]-80/2, 80, 80, self.game.hundChipColor, 100)
+                if (box == self.chipBoxes[7]) and (self.bank >= 1000):
+                    self.currentChip = Chip(self.game, mousePos[0]-80/2, mousePos[1]-80/2, 90, 90, self.game.thouChipColor, 1000)
 
                 # if ur broke
                 if (self.currentChip != None):
