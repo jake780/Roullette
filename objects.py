@@ -68,9 +68,8 @@ class Ball():
 
         self.spinning = False
         self.startingIndex = randint(0,37)
-        self.currentSquareIndex = self.startingIndex
+        self.currentSquareIndex = 0
         self.loops = 0
-        self.totalDelay = 1
 
     def draw(self):
         pygame.draw.ellipse(self.game.window, self.game.white, (self.x ,self.y, self.width, self.height), 40)
@@ -90,13 +89,7 @@ class Ball():
             if self.currentSquareIndex == self.startingIndex:
                 self.loops += 1
 
-            # Slow down
-            # if self.loops > 4:
-            #     pygame.time.delay(self.totalDelay)
-            #     self.totalDelay += 2
-            
-            # Final Ball Location
-            # if self.totalDelay >= 200:
+
             if self.loops >= 6:
                 self.spinning = False
                 self.totalDelay = 1
@@ -116,6 +109,6 @@ class Ball():
 
                 # Reset next random starting num
                 self.startingIndex = randint(0,37)
-                self.currentSquareIndex = self.startingIndex
+                self.currentSquareIndex = 0
                 self.loops = 0
             
