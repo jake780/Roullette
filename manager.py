@@ -30,18 +30,40 @@ class Manager():
 
         self.bank = 100
 
-    def log(self):
-        with open("log.csv", "a") as log:
-            log.write(f"{self.bank},")
+        self.gameStats = {}
+        self.loadStats()
 
-    def clearLog(self):
-        with open("log.csv", "w") as log:
-            log.write("")
+    def bankLog(self, clear=False):
+        """Logs the value of the bank throughout the game"""
+        if clear:
+            with open("bankLog.csv", "w") as bankLog:
+                bankLog.write("")
+        else:
+            with open("bankLog.csv", "w") as bankLog:
+                bankLog.write(f"{self.bank},")
+        bankLog.close()
+
+    def loadStats(self):
+        """Load self.gameStats from statLog.txt"""
+        with open("statLog.txt", "r") as log:
+            for line in log:
+                line = line.split(":")
+                self.gameStats[line[0]] = int(line[1])
+        log.close()
+
+    def updateStats(self):
+        """Write to statLog.txt with self.gameStats"""
+        with open("statLog.txt", "w") as log:
+            for key in self.gameStats.keys():
+                log.write(f"{str(key)}:{self.gameStats[key]}\n")
+        log.close()
+        print("\nUpdated statLog.txt\n")
 
     def payout(self, winningNum):
-        """Payout all bets (Parses self.currentBets for winningBet)"""
+        """Payout all bets, tasks after each spin"""
         winAmount = 0
 
+        # Parses self.currentBets for winningBet
         for bet in self.currentBets:
             for label in bet[1]:
                 # label is a special bet
@@ -70,13 +92,15 @@ class Manager():
                     if (label not in ["black", "red", "1-18", "19-36", "even", "odd", "1-12", "13-24", "25-36"]) and (int(label) == winningNum):
                         winAmount += bet[0]
                     
-
         # Apply win amount
         self.bank += (winAmount)
 
-        # Append to the log file
-        self.log()
+        # Append to the bank log file
+        #self.bankLog()
 
+        # Update game stats dict
+        self.gameStats[str(winningNum)] += 1
+        
         # Display win amount
         self.game.d.winMessage(winAmount)
 

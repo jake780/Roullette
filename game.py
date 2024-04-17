@@ -51,7 +51,7 @@ class Game():
         self.d = Display(self)
         self.m = Manager(self)
 
-        self.m.clearLog()
+        self.m.bankLog(clear=True)
 
 
     def setup(self):
@@ -163,6 +163,7 @@ class Game():
                 self.m.draw(mousePos, click)
 
                 if key[27]:
+                    self.m.updateStats()
                     run = False
 
                 if key[32]:
